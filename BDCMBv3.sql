@@ -1,0 +1,63 @@
+use admaptec_jmln2;
+DROP TABLE IF EXISTS cmb_alumno;
+CREATE TABLE  `cmb_alumno`
+(
+  `idalumno` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  `apellidos` VARCHAR(45) NULL,
+  `FECHA_NACIMIENTO` DATE,
+  `PADRE` VARCHAR(50),
+  `TELEFONO` INT,
+  `COMPANIA` VARCHAR(10),
+  `TEL2` INT NULL,
+  `COMP2`VARCHAR(10) NULL,
+  `OBSERVACIONES` VARCHAR(250) NULL,
+  `ACTIVO` BIT,
+   PRIMARY KEY (`idalumno`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_spanish_ci;
+
+DROP TABLE IF EXISTS cmb_catedratico;
+CREATE TABLE IF NOT EXISTS `admaptec_jmln2`.`cmb_catedratico` (
+  `idcatedratico` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(45) NULL,
+  `FECHA_NACIMIENTO` DATE NULL,
+  `PROFESION` VARCHAR(100) NULL,
+  `telefono` VARCHAR(45) NULL,
+  `compania` VARCHAR(45) NOT NULL,
+  `USUARIO` VARCHAR(20) NOT NULL,
+  `PASSWORD` VARCHAR(10) NOT NULL,
+  `ACTIVO` BIT,
+  PRIMARY KEY (`idcatedratico`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_spanish_ci;
+
+DROP TABLE IF EXISTS cmb_curso;
+CREATE TABLE IF NOT EXISTS `admaptec_jmln2`.`cmb_curso` (
+  `idcurso` INT NOT NULL AUTO_INCREMENT,
+  `nombre` VARCHAR(30) NULL,
+  `descripcion` VARCHAR(45) NULL,
+  `activo` BIT,
+  PRIMARY KEY (`idcurso`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_spanish_ci;
+
+DROP TABLE IF EXISTS cmb_asignacion;
+CREATE TABLE IF NOT EXISTS `admaptec_jmln2`.`cmb_asignacion`(
+  `IDCURSO` INT NOT NULL,
+  `IDCATEDRATICO` INT NOT NULL,
+  `IDALUMNO` INT NOT NULL,
+  `HORARIO` VARCHAR(15),
+  `DIA`     VARCHAR(15),
+  `ANIO`    INT,
+  `PRECIO` DECIMAL(5, 2) NOT NULL,
+  `CATEGORIA` VARCHAR(25),
+  `ACTIVO` BIT,
+  PRIMARY KEY( `IDCURSO`,  `IDCATEDRATICO`,  `IDALUMNO`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = latin1
+COLLATE = latin1_spanish_ci;
+
